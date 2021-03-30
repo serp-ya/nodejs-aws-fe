@@ -16,7 +16,7 @@ _(Link to CloudFront website is provided. PR with all changes is submitted in th
 ### Results
 - deployment with serverless-finch plugin on S3 (403) - http://rs-school-fe-app.s3-website-eu-west-1.amazonaws.com/
 - deployment with serverless-finch plugin on CloudFront - https://d2cv8v4pgz0fxx.cloudfront.net/
-- deploymenr with serverless-single-page-app-plugin on S3 (Automated to other Bucket) - http://rs-school-fe-app-cloudfront.s3-website-us-east-1.amazonaws.com/
-- deploymenr with serverless-single-page-app-plugin on CloudFront (Automated to other Bucket) - https://d3owzjummp95ap.cloudfront.net/
+- deploymenr with serverless-single-page-app-plugin on S3 (Automated to other Bucket) - http://rs-school-fe-app-cloudfront.s3-website-eu-west-1.amazonaws.com/
+- deploymenr with serverless-single-page-app-plugin on CloudFront (Automated to other Bucket) - https://d2cv8v4pgz0fxx.cloudfront.net/
 - for deployment with serverless-finch use command `deploy`
 - for deployment with serverless-single-page-app-plugin use command `cloudfront:update:build:deploy`

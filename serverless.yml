@@ -24,6 +24,8 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-west-1
 
 plugins:
   - serverless-finch
@@ -59,11 +61,22 @@ resources:
         PolicyDocument:
           Statement:
             - Sid: PublicReadGetObject
+              Action: s3:GetObject
               Effect: Allow
-              Principal: "*"
-              Action:
-              - s3:GetObject
               Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
+              Principal:
+                AWS:
+                  Fn::Join:
+                    - ' '
+                    - - 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity'
+                      - !Ref CloudFrontOriginAccessIdentity
+
+    CloudFrontOriginAccessIdentity:
+      Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+      Properties:
+        CloudFrontOriginAccessIdentityConfig:
+          Comment: Access identity between CloudFront and S3 bucket
+
     ## Specifying the CloudFront Distribution to server your Web Application
     WebAppCloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
